@@ -19,8 +19,9 @@ import "@innovative_troublemaker/campus_information_system/resource/css/main.css
 const NAVIGATION: Navigation = [
     { kind: 'header', title: 'Academic' },
     ROUTES.LIBRARY.navigation,
+    ROUTES.SCHOLARSHIP.navigation,
     {
-        segment: 'department',
+        segment: 'academic',
         title: 'Department',
         icon: <MUIIcon.SchoolSharp />,
         children: [
@@ -30,6 +31,7 @@ const NAVIGATION: Navigation = [
     },
     { kind: 'divider' },
     { kind: 'header', title: 'Administrative' },
+    ROUTES.ADMISSION.navigation,
     ROUTES.OSA.navigation,
     ROUTES.CHAPEL.navigation,
     ROUTES.SPORT.navigation,
@@ -66,7 +68,7 @@ class PageContent extends React.Component<{ pathname: string }> {
             ContentComponent = ROUTES_GATEX.component;
         }
         else {
-            ContentComponent = () => <>Page Not Found</>;
+            ContentComponent = () => <><MUI.Typography variant={`h2`}>Page Not Found!</MUI.Typography></>;
         }
 
         return (

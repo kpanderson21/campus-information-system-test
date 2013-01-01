@@ -4,7 +4,7 @@ import * as MUI from "@mui/material";
 
 const ViewChapel: React.FC = () => {
     return(<>
-        <MUI.Typography variant={`h1`}>
+        <MUI.Typography variant={`h2`}>
             Chapel.
         </MUI.Typography>
     </>);

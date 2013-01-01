@@ -16,8 +16,11 @@ import ViewChapel from "@innovative_troublemaker/campus_information_system/view/
 
 import ViewSport from "@innovative_troublemaker/campus_information_system/view/administrative/sport/index.tsx";
 
-
 import ViewLibrary from "@innovative_troublemaker/campus_information_system/view/academic/library/index.tsx";
+
+import ViewAdmission from "@innovative_troublemaker/campus_information_system/view/administrative/admission/index.tsx";
+
+import ViewScholarship from "@innovative_troublemaker/campus_information_system/view/academic/scholarship/index.tsx";
 
 type ComponentItemPrime = React.ComponentClass | React.FC;
 type NavigationItemPrime = Toolpad.NavigationPageItem;
@@ -51,20 +54,20 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
     }),
     COLLEGE_OF_ENGINEERING: Object.freeze({
         ID: "COLLEGE_OF_ENGINEERING",
-        path: "/department/college-of-engineering",
+        path: "/academic/department/college-of-engineering",
         component: ViewCollegeOfEngineering,
         navigation: {
-            segment: "college-of-engineering",
+            segment: "department/college-of-engineering",
             title: "College of Engineering",
             icon: <MUIIcon.SchoolSharp />
         }
     }),
     COLLEGE_OF_NURSING: Object.freeze({
         ID: "COLLEGE_OF_NURSING",
-        path: "/department/college-of-nursing",
+        path: "/academic/department/college-of-nursing",
         component: ViewCollegeOfNursing,
         navigation: {
-            segment: "college-of-nursing",
+            segment: "department/college-of-nursing",
             title: "College of Nursing",
             icon: <MUIIcon.SchoolSharp />
         }
@@ -100,7 +103,7 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
         }
     }),
     LIBRARY: Object.freeze({
-        ID: "SPORT",
+        ID: "LIBRARY",
         path: "/academic/library",
         component: ViewLibrary,
         navigation: {
@@ -108,18 +111,56 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
             title: "Library",
             icon: <MUIIcon.LibraryBooksSharp />
         }
+    }),
+    ADMISSION: Object.freeze({
+        ID: "ADMISSION",
+        path: "/adminstrative/Admission",
+        component: ViewAdmission,
+        navigation: {
+            segment: "adminstrative/Admission",
+            title: "Admission",
+            icon: <MUIIcon.JoinFullSharp />
+        }
+    }),
+    SCHOLARSHIP: Object.freeze({
+        ID: "SCHOLARSHIP",
+        path: "/academic/Scholarship",
+        component: ViewScholarship,
+        navigation: {
+            segment: "academic/Scholarship",
+            title: "Scholarship",
+            icon: <MUIIcon.WorkspacePremium />
+        }
     })
 });
 
-export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = Object.freeze({
-    [ROUTES.HOME.path]: ROUTES.HOME,
-    [ROUTES.LIBRARY.path]: ROUTES.LIBRARY,
-    [ROUTES.COLLEGE_OF_ENGINEERING.path]: ROUTES.COLLEGE_OF_ENGINEERING,
-    [ROUTES.COLLEGE_OF_NURSING.path]: ROUTES.COLLEGE_OF_NURSING,
-    [ROUTES.OSA.path]: ROUTES.OSA,
-    [ROUTES.CHAPEL.path]: ROUTES.CHAPEL,
-    [ROUTES.SPORT.path]: ROUTES.SPORT
-});
+// export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = Object.freeze({
+//     [ROUTES.HOME.path]: ROUTES.HOME,
+//     [ROUTES.LIBRARY.path]: ROUTES.LIBRARY,
+//     [ROUTES.COLLEGE_OF_ENGINEERING.path]: ROUTES.COLLEGE_OF_ENGINEERING,
+//     [ROUTES.COLLEGE_OF_NURSING.path]: ROUTES.COLLEGE_OF_NURSING,
+//     [ROUTES.OSA.path]: ROUTES.OSA,
+//     [ROUTES.CHAPEL.path]: ROUTES.CHAPEL,
+//     [ROUTES.SPORT.path]: ROUTES.SPORT
+// });
 
+
+// export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = Object.freeze(
+//     Object.values(ROUTES).reduce((acc, route) => {
+//         acc[route.path] = route;
+//         return acc;
+//     }, {} as {[key: string]: RouteData})
+// );
+
+
+export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = (() => {
+    const gate: {[key: string]: RouteData} = {};
+
+    Object.values(ROUTES).forEach(route => {
+        gate[route.path] = route;
+    });
+
+    return Object.freeze(gate);
+})();
 
 export default ROUTES_GATE;
