@@ -2,6 +2,7 @@ export namespace $innovative_troublemaker$campus_information_system$model$headin
     export interface IHeaderState {
         readonly id: string;
         title?: string;
+        isMobileOpen?: boolean;
         apply?: () => void;
     }
 }

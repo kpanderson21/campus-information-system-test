@@ -87,7 +87,7 @@ export namespace $innovative_troublemaker$campus_information_system$component$la
 
                         <ReactRouterDom.Outlet />
 
-                        <MUI.Button disabled={true} variant="innovativeTroublemakerButton1">
+                        <MUI.Button disabled={ this.state.isDarkMode } variant="innovativeTroublemakerButton1">
                             BTN
                         </MUI.Button>
 
