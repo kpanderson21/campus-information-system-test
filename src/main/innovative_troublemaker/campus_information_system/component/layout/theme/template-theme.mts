@@ -148,6 +148,9 @@ export const LIGHT_THEME: MUI.Theme
                         {
                             props: { variant: 'innovativeTroublemakerButton1' },
                             style: {
+                                textTransform: `none`,
+                                fontWeight: `bold`,
+                                letterSpacing: `0.08rem`,
                                 backgroundColor: COLOR_THEME(ColorTheme.LIGHT).secondary.main,
                                 color: COLOR_THEME(ColorTheme.LIGHT).primary.main,
                                 // fontWeight: `bolder`,
@@ -210,6 +213,9 @@ export const DARK_THEME: MUI.Theme
                         {
                             props: { variant: 'innovativeTroublemakerButton1' },
                             style: {
+                                textTransform: `none`,
+                                fontWeight: `bold`,
+                                letterSpacing: `0.08rem`,
                                 backgroundColor: COLOR_THEME(ColorTheme.DARK).secondary.main,
                                 color: COLOR_THEME(ColorTheme.DARK).primary.light,
                                 // fontWeight: `bolder`,

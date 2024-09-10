@@ -6,6 +6,9 @@ export namespace $innovative_troublemaker$campus_information_system$model$theme 
         isDarkMode?: boolean;
         apply(): void;
     }
+
 }
 
 export type IThemeState = $innovative_troublemaker$campus_information_system$model$theme.IThemeState;
+
+

@@ -7,18 +7,45 @@ import Footer from "@innovative_troublemaker/campus_information_system/component
 
 // import { IThemeState } from "@innovative_troublemaker/campus_information_system/model/theme/IThemeState.mts"
 
-import { $innovative_troublemaker$campus_information_system$model$theme as $model$theme } from "@innovative_troublemaker/campus_information_system/model/theme/pkg-info.mts";
+import { 
+    $innovative_troublemaker$campus_information_system$model$theme as $model$theme 
+} from "@innovative_troublemaker/campus_information_system/model/theme/pkg-info.mts";
+
+import { 
+    $innovative_troublemaker$campus_information_system$model$heading as $model$heading 
+} from "@innovative_troublemaker/campus_information_system/model/heading/pkg-info.mts";
 
 import {
     DARK_THEME,
     LIGHT_THEME
 } from "@innovative_troublemaker/campus_information_system/component/layout/theme/template-theme.mts";
 
+import ContextProvider0x0001 from "@innovative_troublemaker/campus_information_system/component/layout/context/ContextProvider0x0001";
+import ContextProvider0x0002 
+    from "@innovative_troublemaker/campus_information_system/component/layout/context/ContextProvider0x0002.tsx";
+import HeaderII from "@innovative_troublemaker/campus_information_system/component/HeaderII.tsx";
+
+import 
+    {
+        CommonProp,
+        CommonState
+    }
+    from "@innovative_troublemaker/campus_information_system/component/layout/context/Context0x0002.tsx";
+// interface IHeaderState {
+//     themeState: $model$theme.IThemeState;
+//     headerState: $model$heading.IHeaderState;
+// }
+
 export namespace $innovative_troublemaker$campus_information_system$component$layout {
 
-    export class Layout0x0001 extends React.Component<{}, $model$theme.IThemeState> {
+    export class Layout0x0001 extends React.Component<
+        {}, 
+        CommonState
+    > {
 
-        public constructor(props: globalThis.Readonly<{}>) {
+        public constructor(
+            props: globalThis.Readonly<{}>
+        ) {
             super(props);
             this.init();
         }
@@ -26,7 +53,8 @@ export namespace $innovative_troublemaker$campus_information_system$component$la
         private init(): void {
             this.state = {
                 id: `${this.constructor.name}.IThemeState`,
-                isDarkMode: true,
+                isMobileOpen: false,
+                isDarkMode: false,
                 apply: this.toggleState
             };
         }
@@ -45,12 +73,13 @@ export namespace $innovative_troublemaker$campus_information_system$component$la
 
         public componentDidUpdate(
             prevProps: Readonly<{}>,
-            prevState: Readonly<$model$theme.IThemeState>,
+            prevState: Readonly<CommonState>,
             snapshot?: any
         ): void {
+
             if (prevState.isDarkMode !== this.state.isDarkMode) {
                 globalThis.localStorage.setItem(
-                    this.state.id, 
+                    this.state.id,
                     JSON.stringify(this.state)
                 );
             }
@@ -63,8 +92,15 @@ export namespace $innovative_troublemaker$campus_information_system$component$la
         // }
 
         private toggleState = (): void => {
+            const CACHE_IS_DARK_MODE: string | null
+                = globalThis.localStorage.getItem(
+                    this.state.id
+                );
+            if (CACHE_IS_DARK_MODE !== null)
+                this.setState(JSON.parse(CACHE_IS_DARK_MODE));
             this.setState(prev => ({
-                isDarkMode: !prev.isDarkMode
+                isDarkMode: !prev.isDarkMode,
+                // isMobileOpen: !prev.isMobileOpen
             }));
         }
 
@@ -75,27 +111,28 @@ export namespace $innovative_troublemaker$campus_information_system$component$la
         public render(): React.JSX.Element {
             return (<>
                 <MUI.ThemeProvider
-                theme={this.state.isDarkMode ? DARK_THEME : LIGHT_THEME}>
+                    theme={this.state.isDarkMode ? DARK_THEME : LIGHT_THEME}>
                     <MUI.CssBaseline />
-                    <MUI.Paper>
-                        <Header id={this.state.id} 
-                        themeState={this.state} />
+                    <ContextProvider0x0002 
+                    id={this.state.id}
+                    headerState={this.state}
+                    themeState={this.state}>
+                        <MUI.Container>
+                            <HeaderII id={this.state.id}/>
 
-                        <MUI.Typography variant="innovativeTroublemakerH1">
-                            {this.state.isDarkMode ? "dark_mode" : "light_mode"}
-                        </MUI.Typography>
+                            <MUI.Divider className={`pt-[12rem]`} />
 
-                        <ReactRouterDom.Outlet />
+                            <ReactRouterDom.Outlet />
 
-                        <MUI.Button disabled={ this.state.isDarkMode } variant="innovativeTroublemakerButton1">
-                            BTN
-                        </MUI.Button>
+                            <MUI.Button disabled={this.state.isDarkMode} 
+                            variant="innovativeTroublemakerButton1">
+                                btn
+                            </MUI.Button>
 
-                        <Footer id={this.state.id} 
-                        headerState={this.state} 
-                        themeState={this.state}/>
+                            <Footer id={this.state.id} />
 
-                    </MUI.Paper>
+                        </MUI.Container>
+                    </ContextProvider0x0002>
                 </MUI.ThemeProvider>
             </>);
         }

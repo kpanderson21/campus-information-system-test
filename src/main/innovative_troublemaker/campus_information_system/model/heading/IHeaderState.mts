@@ -3,7 +3,7 @@ export namespace $innovative_troublemaker$campus_information_system$model$headin
         readonly id: string;
         title?: string;
         isMobileOpen?: boolean;
-        apply?: () => void;
+        apply: () => void;
     }
 }
 
