@@ -35,6 +35,7 @@ export default class HeaderII
 
     public componentDidMount(): void {
         const { id, headerState, themeState }: CommonProp = this.context;
+        // const { id:idx, isMobileOpen } = this.context.headerState!;
 
         const CACHE_IS_MOBILE_MENU_OPEN: string | null
             = globalThis.localStorage.getItem(
@@ -96,7 +97,7 @@ export default class HeaderII
             <MUI.Box onClick={
                 (e) => {
                     e.preventDefault();
-                    this.state.apply();
+                    this.state.apply?.();
                 }
             } sx={{ textAlign: 'center' }}>
                 <MUI.Typography variant="h6" sx={{ my: 2 }}>
@@ -172,7 +173,7 @@ export default class HeaderII
                         e.preventDefault();
                         // this.props.themeState?.apply()
                         // this.props.themeState?.apply()
-                        themeState?.apply();
+                        themeState?.apply?.();
                     }}>
                     Header... {themeState?.isDarkMode ? "dark_mode" : "light_mode"}
                 </MUI.Typography>
@@ -212,8 +213,8 @@ export default class HeaderII
         return `${this.constructor.name}@[]`
     }
 
-    static contextType?: typeof CONTEXT_0x0002 | undefined
+    public static readonly contextType?: typeof CONTEXT_0x0002 | undefined
         = CONTEXT_0x0002;
     // context!: React.ContextType<typeof CONTEXT_0x0002>;
-    declare context: React.ContextType<typeof CONTEXT_0x0002>
+    public declare readonly context: React.ContextType<typeof CONTEXT_0x0002>
 }

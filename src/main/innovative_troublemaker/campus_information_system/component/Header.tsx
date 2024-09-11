@@ -79,7 +79,7 @@ export default class Header extends React.Component<
             <MUI.Box onClick={
                 (e) => {
                     e.preventDefault();
-                    this.state.apply();
+                    this.state.apply?.();
                 }
             } sx={{ textAlign: 'center' }}>
                 <MUI.Typography variant="h6" sx={{ my: 2 }}>
@@ -156,8 +156,8 @@ export default class Header extends React.Component<
                             className={`select-none w-fit cursor-pointer`}
                             onClick={(e) => {
                                 e.preventDefault();
-                                // this.props.themeState?.apply()
-                                context.themeProp.themeState?.apply()
+                                // this.props.themeState?.apply?.()
+                                context.themeProp.themeState?.apply?.()
                             }}>
                             Header... {context.themeProp.themeState?.isDarkMode ? "dark_mode" : "light_mode"}
                         </MUI.Typography>

@@ -10,7 +10,7 @@ import {
     $innovative_troublemaker$campus_information_system$model$theme as $model$theme
 } from "@innovative_troublemaker/campus_information_system/model/theme/pkg-info.mts";
 import { Context0x0001 } from "./layout/context/ContextProvider0x0001";
-import CONTEXT_0x0002 from "./layout/context/Context0x0002";
+import CONTEXT_0x0003 from "./layout/context/Context0x0003";
 
 export namespace $innovative_troublemaker$campus_information_system$component {
     export class Footer
@@ -55,22 +55,36 @@ export namespace $innovative_troublemaker$campus_information_system$component {
         public render(): React.JSX.Element {
             return (<>
 
-                <CONTEXT_0x0002.Consumer>
+                <CONTEXT_0x0003.Consumer>
                     {(context) => {
                         return (<>
                             <MUI.Typography variant="h3">
                                 Footer...
                             </MUI.Typography>
-                            <MUI.Button variant="innovativeTroublemakerButton1"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    context.themeState?.apply();
-                                }}>
-                                {this.props.id}
-                            </MUI.Button>
+
+                            <MUI.Stack
+                            gap={`2rem`}>
+                                <MUI.Button
+                                    disabled={context?.state.isDarkMode}
+                                    variant="innovativeTroublemakerButton1">
+                                    {context?.state.isDarkMode ? "true" : "false"}
+                                </MUI.Button>
+                                <MUI.Button variant="innovativeTroublemakerButton1"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        context?.dispatch(
+                                            {
+                                                id: context.state.id,
+                                                isDarkMode: !context.state.isDarkMode,
+                                            }
+                                        );
+                                    }}>
+                                    {this.props.id}
+                                </MUI.Button>
+                            </MUI.Stack>
                         </>)
                     }}
-                </CONTEXT_0x0002.Consumer>
+                </CONTEXT_0x0003.Consumer>
             </>);
         }
     }
