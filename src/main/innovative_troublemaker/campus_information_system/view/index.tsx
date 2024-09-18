@@ -24,10 +24,10 @@ export function view_welcome(
     return (<>
         <MUI.Typography variant="innovativeTroublemakerH1">
             Welcome Page...
-            {CONTEXT?.state?.isDarkMode ? "dark_mode" : "light_mode"}
+            {/* {CONTEXT?.state?.isDarkMode ? "dark_mode" : "light_mode"} */}
         </MUI.Typography>
         <MUI.Typography textAlign={`end`}>
-            {CONTEXT?.state?.isMobileOpen ? "MMO" : "MMC"}
+            {/* {CONTEXT?.state?.isMobileOpen ? "MMO" : "MMC"} */}
         </MUI.Typography>
     </>);
 }

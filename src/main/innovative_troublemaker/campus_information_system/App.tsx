@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as ReactRouterDom from "react-router-dom";
 
-import Layout0x0002 from "@innovative_troublemaker/campus_information_system/component/layout/Layout0x0002.tsx";
+import Layout0x0003 from "@innovative_troublemaker/campus_information_system/component/layout/Layout0x0003.tsx";
 
 import { 
     $innovative_troublemaker$campus_information_system$model 
@@ -12,6 +12,8 @@ import {
 import CollegeOfNursing from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_nursing/index.tsx";
 
 import ViewWelcome from "@innovative_troublemaker/campus_information_system/view/index.tsx";
+import ViewWelcomeCollegeOfEngineering from "./view/academic/department/college_of_engineering";
+import DashboardLayoutBasic from "./component/layout/LayoutSimpleDashBoard";
 
 //REM: [TODO]
 declare global {
@@ -33,8 +35,11 @@ String.prototype.hashCode = function() {
 }
 
 export namespace $innovative_troublemaker$campus_information_system {
-    export class App extends React.Component<$model.ICommonProp,{}> {
-
+    export class App extends React.Component<
+        $model.ICommonProp,
+        $model.ICommonState
+    > 
+{
         public constructor( 
             props: globalThis.Readonly<$model.ICommonProp> 
         ) {
@@ -43,11 +48,16 @@ export namespace $innovative_troublemaker$campus_information_system {
         }
 
         private init(): void {
-            this.state = {};
-            document.title 
-                = this.props.headerState?.title 
+            this.state = {
+                id: this.props.id,
+                title: this.props.headerState?.title
                     ?? import.meta.env.IT_APP_NAME
-                    ?? `[${import.meta.env.MODE}] SJP2CD: Campus Information System`;
+                    ?? `[${import.meta.env.MODE}] SJP2CD: Campus Information System`
+            };
+        }
+
+        public componentDidMount(): void {
+            document.title = this.state.title!;
         }
 
         public render(): React.JSX.Element {
@@ -55,13 +65,21 @@ export namespace $innovative_troublemaker$campus_information_system {
                 <ReactRouterDom.BrowserRouter>
                     <ReactRouterDom.Routes>
                         <ReactRouterDom.Route path={`/`} 
-                        element={<Layout0x0002 id={this.props.id}/>}>
+                        element={<Layout0x0003 id={this.props.id} headerState={this.state}/>}>
+                        {/* <ReactRouterDom.Route path={`/`} 
+                        element={<DashboardLayoutBasic />}> */}
+
                             <ReactRouterDom.Route 
                             index element={<ViewWelcome id=""/>}/>
+
                             <ReactRouterDom.Route 
                             path={`/department/college-of-nursing`} element={<CollegeOfNursing/>}/>
+
                             <ReactRouterDom.Route 
-                            path={`*`} element={`TODO`}/>
+                            path={`/department/college-of-engineering`} element={<ViewWelcomeCollegeOfEngineering/>}/>
+
+                            <ReactRouterDom.Route 
+                            path={`*`} element={<h1>TODO</h1>}/>
                         </ReactRouterDom.Route>
                     </ReactRouterDom.Routes>
                 </ReactRouterDom.BrowserRouter>
