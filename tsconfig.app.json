@@ -23,7 +23,10 @@
     "paths": {
       "@innovative_troublemaker/campus_information_system/*": [
         "./src/main/innovative_troublemaker/campus_information_system/*"
-      ]
+      ],
+      // "@main/*": [
+      //   "./src/main/*"
+      // ]
     }
   },
   "include": ["src"]

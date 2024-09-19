@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import * as ReactRouterDOM from "react-router-dom";
 import * as MUI from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -9,33 +10,33 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import * as MUIIcon from "@mui/icons-material";
 import { LIGHT_THEME, DARK_THEME } from "./template-theme.mts";
 import ViewCollegeOfNursing from './view/ViewCollegeOfNursing';
-import NavigationX from "./Navigation.tsx";
+import ViewCollegeOfEngineering from "../../main/innovative_troublemaker/campus_information_system/view/academic/department/college_of_engineering/index.tsx";
 
 //REM: Navigation configuration
 const NAVIGATION: Navigation = [
-  { kind: 'header', title: 'Academic' },
-  { segment: 'library', title: 'Library', icon: <MUIIcon.LocalLibrarySharp /> },
-  {
-    segment: 'department',
-    title: 'Department',
-    icon: <MUIIcon.SchoolSharp />,
-    children: [
-      { segment: 'college-of-nursing', title: 'College of Nursing', icon: <MUIIcon.Description /> },
-      { segment: 'college-of-engineering', title: 'College of Engineering', icon: <MUIIcon.Description /> },
-    ],
-  },
-  { kind: 'divider' },
-  { kind: 'header', title: 'Administrative' },
-  {
-    segment: 'office-of-student-affairs',
-    title: 'OSA',
-    icon: <MUIIcon.BarChart />,
-    children: [
-      { segment: 'news', title: 'News', icon: <MUIIcon.Description /> },
-      { segment: 'event', title: 'Event', icon: <MUIIcon.Description /> },
-    ],
-  },
-  { segment: 'integrations', title: 'Integrations', icon: <MUIIcon.Layers /> },
+    { kind: 'header', title: 'Academic' },
+    { segment: 'library', title: 'Library', icon: <MUIIcon.LocalLibrarySharp /> },
+    {
+        segment: 'department',
+        title: 'Department',
+        icon: <MUIIcon.SchoolSharp />,
+        children: [
+            { segment: 'college-of-nursing', title: 'College of Nursing', icon: <MUIIcon.Description /> },
+            { segment: 'college-of-engineering', title: 'College of Engineering', icon: <MUIIcon.Description /> },
+        ],
+    },
+    { kind: 'divider' },
+    { kind: 'header', title: 'Administrative' },
+    {
+        segment: 'office-of-student-affairs',
+        title: 'OSA',
+        icon: <MUIIcon.BarChart />,
+        children: [
+            { segment: 'news', title: 'News', icon: <MUIIcon.Description /> },
+            { segment: 'event', title: 'Event', icon: <MUIIcon.Description /> },
+        ],
+    },
+    { segment: 'integrations', title: 'Integrations', icon: <MUIIcon.Layers /> },
 ];
 
 //REM: Theme configuration
@@ -91,11 +92,13 @@ class PageContent extends React.Component<{ pathname: string }> {
                 ContentComponent = () => <ViewCollegeOfNursing />;
                 break;
             case '/department/college-of-engineering':
-                ContentComponent = () => <>College Of Engineering Page</>;
+                ContentComponent = ViewCollegeOfEngineering;
                 break;
             case '/integrations':
                 ContentComponent = () => <>Integrations</>;
                 break;
+            case '/department/college-of-engineering/computer-engineering':
+            case '/department/college-of-engineering/geodetic-engineering':
             default:
                 ContentComponent = () => <Typography>Page not found</Typography>;
         }
@@ -141,7 +144,6 @@ class SimpleDashboardLayout extends React.Component {
 
     updateDocumentTitle(pathname: string) {
         const title = PAGE_TITLES[pathname] || 'Page not found';
-        // const title = NavigationX.getTitle(pathname);
         document.title = `${title} - Campus App`;
     }
 
@@ -158,19 +160,19 @@ class SimpleDashboardLayout extends React.Component {
             navigate: this.navigate,
         };
 
-        // const PageComponent: React.FC = NavigationX.getPageContentComponent(pathname);
-
         return (
-            <AppProvider
-                navigation={NAVIGATION}
-                branding={{ logo: `[LOGO]`, title: `CAMPUS` }}
-                router={router}
-                theme={demoTheme}
-            >
-                <DashboardLayout>
-                    <PageContent pathname={pathname}/>
-                </DashboardLayout>
-            </AppProvider>
+            <ReactRouterDOM.BrowserRouter>
+                <AppProvider
+                    navigation={NAVIGATION}
+                    branding={{ logo: `[LOGO]`, title: `CAMPUS` }}
+                    router={router}
+                    theme={demoTheme}
+                >
+                    <DashboardLayout>
+                        <PageContent pathname={pathname} />
+                    </DashboardLayout>
+                </AppProvider>
+            </ReactRouterDOM.BrowserRouter>
         );
     }
 }
