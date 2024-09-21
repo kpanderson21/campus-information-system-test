@@ -1,18 +1,24 @@
 import * as React from "react";
 import { Container, Typography, Stack, Button, Card, CardContent, CardActions } from "@mui/material";
+import * as MUI from "@mui/material";
 import { NavLink } from "react-router-dom";
+import imgBgHero001 from "@innovative_troublemaker/campus_information_system/resource/img/department/college_of_engineering/bg-hero-001.jpg";
+
 
 const HomePage: React.FC = () => {
-    return (
-        <Container maxWidth="lg">
-            <Stack spacing={4} sx={{ mt: 4 }}>
-                {/* Hero Section */}
-                <div className="hero-section">
-                    <img className="img-hero" src="/res/img-hero.jpg" alt="College of Engineering" style={{ width: '100%', borderRadius: '8px' }} />
-                    <Typography variant="h2" align="center" sx={{ mt: 2 }}>
-                        Welcome to the College of Engineering
-                    </Typography>
-                </div>
+    return (<>
+        {/* Hero Section */}
+        <MUI.Stack className="hero-section relative"
+            style={{ backgroundImage: `url(${imgBgHero001})`, width: "100%", height: "25rem", backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}>
+            <Typography variant={`h2`}
+            className={`absolute left-[1.5rem] bottom-[1.5rem] text-[5rem] font-semibold text-orange-500`} 
+            align="center" 
+            sx={{}}>
+                Welcome to the College of Engineering
+            </Typography>
+        </MUI.Stack>
+        <Container maxWidth="lg" className="relative">
+            <Stack spacing={4} sx={{ mt: 4 }} className="relative w-[100%]">
 
                 {/* Overview Section */}
                 <Stack spacing={2}>
@@ -97,7 +103,7 @@ const HomePage: React.FC = () => {
                 </Stack>
             </Stack>
         </Container>
-    );
+    </>);
 };
 
 export default HomePage;

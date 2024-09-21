@@ -24,10 +24,10 @@
       "@innovative_troublemaker/campus_information_system/*": [
         "./src/main/innovative_troublemaker/campus_information_system/*"
       ],
-      // "@main/*": [
-      //   "./src/main/*"
-      // ]
-    }
+      "@misc/*": [
+        "./src/.misc/*"
+      ]
+    },
   },
   "include": ["src"]
 }

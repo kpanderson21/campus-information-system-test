@@ -24,6 +24,11 @@ export default defineConfig({
           "./src/main/innovative_troublemaker/campus_information_system"
         ),
       // "@main": path.resolve(__dirname, "./src/main"),
+      "@misc":
+        path.resolve(
+          __dirname,
+          "./src/.misc"
+        ),
     },
   },
   build: {

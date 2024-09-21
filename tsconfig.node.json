@@ -16,7 +16,13 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": "./",
+    "paths": {
+      "@innovative_troublemaker/campus_information_system/*": [
+        "./src/main/innovative_troublemaker/campus_information_system/*"
+      ]
+    },
   },
   "include": ["vite.config.ts"]
 }

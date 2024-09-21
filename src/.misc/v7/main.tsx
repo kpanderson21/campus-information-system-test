@@ -9,11 +9,8 @@ import { AppProvider, Navigation } from '@toolpad/core';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import * as MUIIcon from "@mui/icons-material";
 import { LIGHT_THEME, DARK_THEME } from "./template-theme.mts";
-import ViewCollegeOfNursing from './view/ViewCollegeOfNursing';
-import ViewCollegeOfEngineering from "../../main/innovative_troublemaker/campus_information_system/view/academic/department/college_of_engineering/index.tsx";
 
-import ViewCollegeOfEducation from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_education/index.tsx";
-
+import ROUTES_GATE, { ROUTES } from "./route.tsx";
 
 import "@innovative_troublemaker/campus_information_system/resource/css/main.css";
 
@@ -27,9 +24,8 @@ const NAVIGATION: Navigation = [
         title: 'Department',
         icon: <MUIIcon.SchoolSharp />,
         children: [
-            { segment: 'college-of-nursing', title: 'College of Nursing', icon: <MUIIcon.Description /> },
-            { segment: 'college-of-engineering', title: 'College of Engineering', icon: <MUIIcon.Description /> },
-            { segment: 'college-of-education', title: 'College of Education', icon: <MUIIcon.Description /> },
+            ROUTES.COLLEGE_OF_ENGINEERING.navigation,
+            ROUTES.COLLEGE_OF_NURSING.navigation,
         ],
     },
     { kind: 'divider' },
@@ -64,57 +60,19 @@ const demoTheme = createTheme({
 });
 
 
-//REM: Mapping for titles
-const PAGE_TITLES: Record<string, string> = {
-    '/': 'Home',
-    '/library': 'Library',
-    '/office-of-student-affairs/news': 'OSA News',
-    '/office-of-student-affairs/event': 'OSA Event',
-    '/department/college-of-nursing': 'College of Nursing',
-    '/department/college-of-engineering': 'College of Engineering',
-    '/department/college-of-education': 'College of Education',
-    '/integrations': 'Integrations',
-};
 
 //REM: Page Content Component
 class PageContent extends React.Component<{ pathname: string }> {
     render() {
         const { pathname } = this.props;
 
-        let ContentComponent: React.FC;
-
-        switch (pathname) {
-            case '/':
-                ContentComponent = () => <>Home</>;
-                break;
-            case '/library':
-                ContentComponent = () => <>Library Page</>;
-                break;
-            case '/office-of-student-affairs/news':
-                ContentComponent = () => <>OSA news page</>;
-                break;
-            case '/office-of-student-affairs/event':
-                ContentComponent = () => <>OSA event page</>;
-                break;
-            case '/department/college-of-nursing':
-                ContentComponent = () => <ViewCollegeOfNursing />;
-                break;
-            case '/department/college-of-engineering':
-                ContentComponent = ViewCollegeOfEngineering;
-                break;
-            case '/department/college-of-education':
-                ContentComponent = ViewCollegeOfEducation;
-                break;
-            case '/quality_management':
-                ContentComponent = () => <>QMO</>;
-                break;
-            case '/integrations':
-                ContentComponent = () => <>Integrations</>;
-                break;
-            case '/department/college-of-engineering/computer-engineering':
-            case '/department/college-of-engineering/geodetic-engineering':
-            default:
-                ContentComponent = () => <Typography>Page not found</Typography>;
+        const ROUTES_GATEX = ROUTES_GATE[pathname];
+        let ContentComponent: React.ComponentClass | React.FC;
+        if( ROUTES_GATEX ) {
+            ContentComponent = ROUTES_GATEX.component;
+        }
+        else {
+            ContentComponent = () => <>Page Not Found</>;
         }
 
         return (
@@ -157,7 +115,7 @@ class SimpleDashboardLayout extends React.Component {
     };
 
     updateDocumentTitle(pathname: string) {
-        const title = PAGE_TITLES[pathname] || 'Page not found';
+        const title = ROUTES_GATE[pathname]?.navigation?.title?? "Page Not Found";
         document.title = `${title} - Campus App`;
     }
 
