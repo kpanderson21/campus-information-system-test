@@ -10,6 +10,15 @@ import ViewCollegeOfEngineering from "../../main/innovative_troublemaker/campus_
 
 import ViewCollegeOfNursing from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_nursing/index.tsx";
 
+import ViewOSA from "@innovative_troublemaker/campus_information_system/view/administrative/office_of_student_affairs/index.tsx";
+
+import ViewChapel from "@innovative_troublemaker/campus_information_system/view/administrative/chapel/index.tsx";
+
+import ViewSport from "@innovative_troublemaker/campus_information_system/view/administrative/sport/index.tsx";
+
+
+import ViewLibrary from "@innovative_troublemaker/campus_information_system/view/academic/library/index.tsx";
+
 type ComponentItemPrime = React.ComponentClass | React.FC;
 type NavigationItemPrime = Toolpad.NavigationPageItem;
 
@@ -59,13 +68,57 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
             title: "College of Nursing",
             icon: <MUIIcon.SchoolSharp />
         }
+    }),
+    OSA: Object.freeze({
+        ID: "OSA",
+        path: "/administrative/office-of-student-affairs",
+        component: ViewOSA,
+        navigation: {
+            segment: "administrative/office-of-student-affairs",
+            title: "Office of Student Affairs",
+            icon: <MUIIcon.AdminPanelSettingsSharp />
+        }
+    }),
+    CHAPEL: Object.freeze({
+        ID: "CHAPEL",
+        path: "/administrative/chapel",
+        component: ViewChapel,
+        navigation: {
+            segment: "administrative/chapel",
+            title: "Chapel",
+            icon: <MUIIcon.ChurchSharp />
+        }
+    }),
+    SPORT: Object.freeze({
+        ID: "SPORT",
+        path: "/administrative/sport",
+        component: ViewSport,
+        navigation: {
+            segment: "administrative/sport",
+            title: "Sport",
+            icon: <MUIIcon.SportsBaseballSharp />
+        }
+    }),
+    LIBRARY: Object.freeze({
+        ID: "SPORT",
+        path: "/academic/library",
+        component: ViewLibrary,
+        navigation: {
+            segment: "academic/library",
+            title: "Library",
+            icon: <MUIIcon.LibraryBooksSharp />
+        }
     })
 });
 
 export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = Object.freeze({
     [ROUTES.HOME.path]: ROUTES.HOME,
+    [ROUTES.LIBRARY.path]: ROUTES.LIBRARY,
     [ROUTES.COLLEGE_OF_ENGINEERING.path]: ROUTES.COLLEGE_OF_ENGINEERING,
     [ROUTES.COLLEGE_OF_NURSING.path]: ROUTES.COLLEGE_OF_NURSING,
+    [ROUTES.OSA.path]: ROUTES.OSA,
+    [ROUTES.CHAPEL.path]: ROUTES.CHAPEL,
+    [ROUTES.SPORT.path]: ROUTES.SPORT
 });
 
 

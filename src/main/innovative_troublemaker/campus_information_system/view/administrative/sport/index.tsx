@@ -2,12 +2,13 @@
 import * as React from "react";
 import * as MUI from "@mui/material";
 
-const ViewChapel: React.FC = () => {
+
+const ViewSport: React.FC = () => {
     return(<>
         <MUI.Typography variant={`h1`}>
-            Chapel.
+            Sports!
         </MUI.Typography>
     </>);
 }
 
-export default ViewChapel;
+export default ViewSport;
