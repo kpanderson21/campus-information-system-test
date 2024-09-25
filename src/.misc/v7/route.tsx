@@ -2,6 +2,8 @@
 
 import * as React from "react";
 
+import * as MUI from "@mui/material";
+
 import * as Toolpad from "@toolpad/core";
 
 import * as MUIIcon from "@mui/icons-material";
@@ -22,7 +24,10 @@ import ViewAdmission from "@innovative_troublemaker/campus_information_system/vi
 
 import ViewScholarship from "@innovative_troublemaker/campus_information_system/view/academic/scholarship/index.tsx";
 
-type ComponentItemPrime = React.ComponentClass | React.FC;
+import ViewWelcome from "@innovative_troublemaker/campus_information_system/view/index.tsx";
+
+//REM: [TODO, TEMP, ANY_KEYWORD]
+type ComponentItemPrime = React.ComponentClass<any> | React.FC<any>;
 type NavigationItemPrime = Toolpad.NavigationPageItem;
 
 // interface ComponentItem {
@@ -36,7 +41,7 @@ type NavigationItemPrime = Toolpad.NavigationPageItem;
 export interface RouteData {
     readonly ID: string;
     path: string;
-    component: ComponentItemPrime;
+    component?: ComponentItemPrime;
     navigation: NavigationItemPrime;
 }
 
@@ -45,7 +50,7 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
     HOME: Object.freeze({
         ID: "HOME",
         path: "/",
-        component: () => { return (<>Home sweet home.</>); },
+        component: ViewWelcome,
         navigation: {
             segment: "home",
             title: "Home",
@@ -59,6 +64,33 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
         navigation: {
             segment: "department/college-of-engineering",
             title: "College of Engineering",
+            icon: <MUIIcon.SchoolSharp />
+        }
+    }),
+    COLLEGE_OF_COMPUTER_ENGINEERING: Object.freeze({
+        ID: "COLLEGE_OF_COMPUTER_ENGINEERING",
+        path: "/academic/department/college-of-engineering/computer-engineering",
+        // component: ViewCollegeOfComputerEngineering,
+        component: () => <>
+            <MUI.Typography className={`w-full`} variant={`innovativeTroublemakerWarning`}>[Warning!] bugs found</MUI.Typography>
+            <MUI.Typography variant={`innovativeTroublemakerH1`}>Computer Engineering!</MUI.Typography>
+        </>,
+        navigation: {
+            segment: "department/college-of-engineering/computer-engineering",
+            title: "College of Computer Engineering",
+            icon: <MUIIcon.SchoolSharp />
+        }
+    }),
+    COLLEGE_OF_GEODETIC_ENGINEERING: Object.freeze({
+        ID: "COLLEGE_OF_GEODETIC_ENGINEERING",
+        path: "/academic/department/college-of-engineering/geodetic-engineering",
+        // component: ViewCollegeOfGeodeticEngineering,
+        component: () => <>
+            <MUI.Typography className={`w-full`} variant={`innovativeTroublemakerWarning`}>[Warning!] bugs found</MUI.Typography>
+            <MUI.Typography variant={`innovativeTroublemakerH1`}>Geodetic Engineering!</MUI.Typography></>,
+        navigation: {
+            segment: "department/college-of-engineering/geodetic-engineering",
+            title: "College of Geodetic Engineering",
             icon: <MUIIcon.SchoolSharp />
         }
     }),
@@ -134,6 +166,11 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
     })
 });
 
+
+// ROUTES.COLLEGE_OF_ENGINEERING.navigation.children = [
+//     ROUTES.COLLEGE_OF_COMPUTER_ENGINEERING.navigation,
+// ]
+
 // export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = Object.freeze({
 //     [ROUTES.HOME.path]: ROUTES.HOME,
 //     [ROUTES.LIBRARY.path]: ROUTES.LIBRARY,
@@ -153,8 +190,8 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
 // );
 
 
-export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = (() => {
-    const gate: {[key: string]: RouteData} = {};
+export const ROUTES_GATE: Readonly<{ [key: string]: RouteData }> = (() => {
+    const gate: { [key: string]: RouteData } = {};
 
     Object.values(ROUTES).forEach(route => {
         gate[route.path] = route;

@@ -60,11 +60,11 @@ const demoTheme = createTheme({
 //REM: Page Content Component
 class PageContent extends React.Component<{ pathname: string }> {
     render() {
-        const { pathname } = this.props;
 
+        const { pathname } = this.props;
         const ROUTES_GATEX = ROUTES_GATE[pathname];
         let ContentComponent: React.ComponentClass | React.FC;
-        if( ROUTES_GATEX ) {
+        if (ROUTES_GATEX && ROUTES_GATEX.component) {
             ContentComponent = ROUTES_GATEX.component;
         }
         else {
@@ -111,7 +111,7 @@ class SimpleDashboardLayout extends React.Component {
     };
 
     updateDocumentTitle(pathname: string) {
-        const title = ROUTES_GATE[pathname]?.navigation?.title?? "Page Not Found";
+        const title = ROUTES_GATE[pathname]?.navigation?.title ?? "Page Not Found";
         document.title = `${title} - Campus App`;
     }
 
@@ -120,7 +120,7 @@ class SimpleDashboardLayout extends React.Component {
         this.setState({ pathname: path });
     };
 
-    render() {
+    render(): React.ReactElement {
         const { pathname } = this.state;
         const router = {
             pathname,
@@ -128,20 +128,22 @@ class SimpleDashboardLayout extends React.Component {
             navigate: this.navigate,
         };
 
-        return (
-            <ReactRouterDOM.BrowserRouter>
-                <AppProvider
-                    navigation={NAVIGATION}
-                    branding={{ logo: `[LOGO]`, title: `CAMPUS` }}
-                    router={router}
-                    theme={demoTheme}
-                >
-                    <DashboardLayout>
-                        <PageContent pathname={pathname} />
-                    </DashboardLayout>
-                </AppProvider>
-            </ReactRouterDOM.BrowserRouter>
-        );
+        return (<>
+            <AppProvider
+                navigation={NAVIGATION}
+                branding={{ logo: `[LOGO]`, title: `CAMPUS` }}
+                router={router}
+                theme={demoTheme}
+            >
+                <DashboardLayout>
+                    {/* <ReactRouterDOM.BrowserRouter> */}
+                    {/* <ReactRouterDOM.Routes> */}
+                    <PageContent pathname={pathname} />
+                    {/* </ReactRouterDOM.Routes> */}
+                    {/* </ReactRouterDOM.BrowserRouter> */}
+                </DashboardLayout>
+            </AppProvider>
+        </>);
     }
 }
 
