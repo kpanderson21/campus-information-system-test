@@ -18,7 +18,7 @@ import "@innovative_troublemaker/campus_information_system/resource/css/main.css
 //REM: Navigation configuration
 const NAVIGATION: Navigation = [
     { kind: 'header', title: 'Academic' },
-    ROUTES.LIBRARY.navigation,
+    { segment: 'library', title: 'Library', icon: <MUIIcon.LocalLibrarySharp /> },
     {
         segment: 'department',
         title: 'Department',
@@ -30,9 +30,15 @@ const NAVIGATION: Navigation = [
     },
     { kind: 'divider' },
     { kind: 'header', title: 'Administrative' },
-    ROUTES.OSA.navigation,
-    ROUTES.CHAPEL.navigation,
-    ROUTES.SPORT.navigation,
+    {
+        segment: 'office-of-student-affairs',
+        title: 'OSA',
+        icon: <MUIIcon.BarChart />,
+        children: [
+            { segment: 'news', title: 'News', icon: <MUIIcon.Description /> },
+            { segment: 'event', title: 'Event', icon: <MUIIcon.Description /> },
+        ],
+    },
     { segment: 'integrations', title: 'Integrations', icon: <MUIIcon.Layers /> },
 ];
 
