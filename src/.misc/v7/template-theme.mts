@@ -35,7 +35,7 @@ declare module "@mui/material/styles" {
     interface TypographyVariantsOptions {
         innovativeTroublemakerH1?: React.CSSProperties;
         innovativeTroublemakerH2?: React.CSSProperties;
-        innovativeTroublemakerWarning: React.CSSProperties;
+        innovativeTroublemakerWarning?: React.CSSProperties;
     }
 
     interface ButtonVariants {
@@ -205,9 +205,9 @@ export const DARK_THEME: MUI.Theme
                 }
             },
             typography: {
-                button: {
-                    color: COLOR_THEME(ColorTheme.DARK).primary.main,
-                },
+                // button: {
+                //     color: COLOR_THEME(ColorTheme.DARK).primary.main,
+                // },
                 innovativeTroublemakerH1: {
                     fontSize: `5rem`,
                 },

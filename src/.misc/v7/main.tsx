@@ -9,6 +9,7 @@ import { AppProvider, Navigation } from '@toolpad/core';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import * as MUIIcon from "@mui/icons-material";
 import { LIGHT_THEME, DARK_THEME } from "./template-theme.mts";
+import FooterI from "@innovative_troublemaker/campus_information_system/component/FooterI.tsx";
 
 import ROUTES_GATE, { ROUTES } from "./route.tsx";
 
@@ -131,7 +132,10 @@ class SimpleDashboardLayout extends React.Component {
         return (<>
             <AppProvider
                 navigation={NAVIGATION}
-                branding={{ logo: `[LOGO]`, title: `CAMPUS` }}
+                branding={{ 
+                    logo: `[LOGO]`, 
+                    title: `CAMPUS`,
+                }}
                 router={router}
                 theme={demoTheme}
             >
@@ -139,6 +143,7 @@ class SimpleDashboardLayout extends React.Component {
                     {/* <ReactRouterDOM.BrowserRouter> */}
                     {/* <ReactRouterDOM.Routes> */}
                     <PageContent pathname={pathname} />
+                    <FooterI/>
                     {/* </ReactRouterDOM.Routes> */}
                     {/* </ReactRouterDOM.BrowserRouter> */}
                 </DashboardLayout>

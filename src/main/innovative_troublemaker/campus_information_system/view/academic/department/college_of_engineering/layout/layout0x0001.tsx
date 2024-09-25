@@ -30,7 +30,7 @@ const Layout0x0001: React.FC = () => {
         </MUI.Stack>
         <MUI.Container maxWidth="lg" className="relative">
             <ReactRouterDOM.Outlet />
-            <FooterI />
+            {/* <FooterI /> */}
         </MUI.Container>
     </>)
 }

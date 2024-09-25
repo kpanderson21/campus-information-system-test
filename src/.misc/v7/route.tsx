@@ -8,6 +8,8 @@ import * as Toolpad from "@toolpad/core";
 
 import * as MUIIcon from "@mui/icons-material";
 
+import "./template-theme.mts";
+
 import ViewCollegeOfEngineering from "../../main/innovative_troublemaker/campus_information_system/view/academic/department/college_of_engineering/index.tsx";
 
 import ViewCollegeOfNursing from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_nursing/index.tsx";
@@ -74,7 +76,7 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
         path: "/academic/department/college-of-engineering/computer-engineering",
         // component: ViewCollegeOfComputerEngineering,
         component: () => <>
-            <MUI.Typography className={`w-full`} variant={`innovativeTroublemakerWarning`}>[Warning!] bugs found</MUI.Typography>
+            <MUI.Typography className={`w-full`} variant="innovativeTroublemakerWarning">[Warning!] bugs found</MUI.Typography>
             <MUI.Typography variant={`innovativeTroublemakerH1`}>Computer Engineering!</MUI.Typography>
         </>,
         navigation: {

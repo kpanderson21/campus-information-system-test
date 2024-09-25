@@ -13,7 +13,7 @@ const FooterI: React.FC = () => {
                 <MUI.Typography variant="body1">
                     For more information, feel free to contact us at:
                     <br />
-                    Email: <a href="mailto:info@collegeofengineering.edu">info.collegeofengineering@sjp2cd.edu.ph</a>
+                    Email: <a href="mailto:info@campus.edu.ph">info@campus.edu.ph</a>
                     <br />
                     Phone: (82) 123-1234 | +63 912-1234-123
                 </MUI.Typography>
