@@ -29,6 +29,10 @@ import ViewScholarship from "@innovative_troublemaker/campus_information_system/
 
 import ViewWelcome from "@innovative_troublemaker/campus_information_system/view/index.tsx";
 
+import ViewAccounting from "@innovative_troublemaker/campus_information_system/view/administrative/accounting/index.tsx";
+
+import ViewRegistrar from "@innovative_troublemaker/campus_information_system/view/administrative/registrar/index.tsx";
+
 //REM: [TODO, TEMP, ANY_KEYWORD]
 type ComponentItemPrime = React.ComponentClass<any> | React.FC<any>;
 
@@ -150,22 +154,42 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
     }),
     ADMISSION: Object.freeze({
         ID: "ADMISSION",
-        path: "/adminstrative/Admission",
+        path: "/adminstrative/admission",
         component: ViewAdmission,
         navigation: {
-            segment: "adminstrative/Admission",
+            segment: "adminstrative/admission",
             title: "Admission",
             icon: <MUIIcon.JoinFullSharp />
         }
     }),
     SCHOLARSHIP: Object.freeze({
         ID: "SCHOLARSHIP",
-        path: "/academic/Scholarship",
+        path: "/academic/scholarship",
         component: ViewScholarship,
         navigation: {
-            segment: "academic/Scholarship",
+            segment: "academic/scholarship",
             title: "Scholarship",
             icon: <MUIIcon.WorkspacePremium />
+        }
+    }),
+    ACCOUNTING: Object.freeze({
+        ID: "ACCOUNTING",
+        path: "/administrative/accounting",
+        component: ViewAccounting,
+        navigation: {
+            segment: "administrative/accounting",
+            title: "Accounting",
+            icon: <MUIIcon.AccountBalanceSharp />
+        }
+    }),
+    REGISTRAR: Object.freeze({
+        ID: "REGISTRAR",
+        path: "/administrative/registrar",
+        component: ViewRegistrar,
+        navigation: {
+            segment: "administrative/registrar",
+            title: "Registrar",
+            icon: <MUIIcon.FolderSharedSharp />
         }
     })
 });

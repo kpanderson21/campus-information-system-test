@@ -33,6 +33,8 @@ const NAVIGATION: Navigation = [
     { kind: 'divider' },
     { kind: 'header', title: 'Administrative' },
     ROUTES.ADMISSION.navigation,
+    ROUTES.REGISTRAR.navigation,
+    ROUTES.ACCOUNTING.navigation,
     ROUTES.OSA.navigation,
     ROUTES.CHAPEL.navigation,
     ROUTES.SPORT.navigation,
