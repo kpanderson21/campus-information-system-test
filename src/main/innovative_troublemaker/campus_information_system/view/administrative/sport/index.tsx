@@ -3,13 +3,12 @@ import * as React from "react";
 import * as MUI from "@mui/material";
 
 
-const ViewAdmission: React.FC = () => {
-    return (<>
+const ViewSport: React.FC = () => {
+    return(<>
         <MUI.Typography variant={`h2`}>
-            Admission!
+            Sports!
         </MUI.Typography>
-    </>)
-};
+    </>);
+}
 
-
-export default ViewAdmission;
+export default ViewSport;
