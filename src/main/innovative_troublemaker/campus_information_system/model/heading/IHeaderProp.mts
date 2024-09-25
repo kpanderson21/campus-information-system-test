@@ -4,7 +4,7 @@ export namespace $innovative_troublemaker$campus_information_system$model$headin
     export interface IHeaderProp {
         readonly id: string;
         window?: () => globalThis.Window;
-        children?: React.ReactElement;
+        children?: React.ReactNode;
         headerState?: IHeaderState;
     }
 }

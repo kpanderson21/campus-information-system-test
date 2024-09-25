@@ -29,11 +29,13 @@ declare module "@mui/material/styles" {
     interface TypographyVariants {
         innovativeTroublemakerH1: React.CSSProperties;
         innovativeTroublemakerH2: React.CSSProperties;
+        innovativeTroublemakerWarning: React.CSSProperties;
     }
 
     interface TypographyVariantsOptions {
         innovativeTroublemakerH1?: React.CSSProperties;
         innovativeTroublemakerH2?: React.CSSProperties;
+        innovativeTroublemakerWarning?: React.CSSProperties;
     }
 
     interface ButtonVariants {
@@ -52,6 +54,7 @@ declare module '@mui/material/Typography' {
     interface TypographyPropsVariantOverrides {
         innovativeTroublemakerH1: true;
         innovativeTroublemakerH2: true;
+        innovativeTroublemakerWarning: true;
     }
 }
 
@@ -140,6 +143,11 @@ export const LIGHT_THEME: MUI.Theme
                 },
                 innovativeTroublemakerH2: {
                     fontSize: `4rem`,
+                },
+                innovativeTroublemakerWarning: {
+                    fontSize: `1.2rem`,
+                    backgroundColor: `black`,
+                    color: `yellow`
                 }
             },
             components: {
@@ -197,14 +205,19 @@ export const DARK_THEME: MUI.Theme
                 }
             },
             typography: {
-                button: {
-                    color: COLOR_THEME(ColorTheme.DARK).primary.main,
-                },
+                // button: {
+                //     color: COLOR_THEME(ColorTheme.DARK).primary.main,
+                // },
                 innovativeTroublemakerH1: {
                     fontSize: `5rem`,
                 },
                 innovativeTroublemakerH2: {
                     fontSize: `4rem`,
+                },
+                innovativeTroublemakerWarning: {
+                    fontSize: `1.2rem`,
+                    backgroundColor: `black`,
+                    color: `yellow`
                 }
             },
             components: {

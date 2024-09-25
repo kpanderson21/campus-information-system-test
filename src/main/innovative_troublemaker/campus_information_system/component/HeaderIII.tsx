@@ -127,7 +127,7 @@ export default class HeaderIII
         );
     }
 
-    public render(): React.ReactElement {
+    public render(): React.ReactElement<React.JSX.Element> {
 
         const { state }: IStateContextType = this.context!;
 
