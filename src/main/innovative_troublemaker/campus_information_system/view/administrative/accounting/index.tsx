@@ -3,13 +3,13 @@ import * as React from "react";
 import * as MUI from "@mui/material";
 
 
-const ViewRegistrar: React.FC = () => {
+const ViewAccounting: React.FC = () => {
     return (<>
         <MUI.Typography variant={`h2`}>
-            Registrar.
+            Accounting Office.
         </MUI.Typography>
     </>)
 }
 
-export default ViewRegistrar;
+export default ViewAccounting;
 
