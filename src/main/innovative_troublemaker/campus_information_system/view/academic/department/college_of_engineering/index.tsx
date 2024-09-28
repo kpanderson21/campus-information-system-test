@@ -4,7 +4,7 @@ import * as ReactRouterDOM from "react-router-dom";
 
 import Layout0x0001 from "./layout/layout0x0001.tsx";
 import ViewHome from "./home.tsx";
-import ROUTES_GATE, { ROUTES } from "@misc/v7/route.tsx";
+import { ROUTES } from "@innovative_troublemaker/campus_information_system/component/layout/context/route.tsx";
 
 const ViewCollegeOfEngineering: React.FC = () => {
     
