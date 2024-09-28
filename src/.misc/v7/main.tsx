@@ -67,6 +67,7 @@ class PageContent extends React.Component<{ pathname: string }> {
         const { pathname } = this.props;
         const ROUTES_GATEX = ROUTES_GATE[pathname];
         let ContentComponent: React.ComponentClass | React.FC;
+
         if (ROUTES_GATEX && ROUTES_GATEX.component) {
             ContentComponent = ROUTES_GATEX.component;
         }

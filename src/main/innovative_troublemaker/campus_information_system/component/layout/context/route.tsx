@@ -1,19 +1,16 @@
 
-
-import * as React from "react";
-
 import * as MUI from "@mui/material";
-
-import * as Toolpad from "@toolpad/core";
-
 import * as MUIIcon from "@mui/icons-material";
 
-import "./template-theme.mts";
+import { $innovative_troublemaker$campus_information_system$model as $model } from "@innovative_troublemaker/campus_information_system/model/pkg-info.mts"
 
-import ViewCollegeOfEngineering from "../../main/innovative_troublemaker/campus_information_system/view/academic/department/college_of_engineering/index.tsx";
+import ViewCollegeOfEngineering from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_engineering/index.tsx";
 
 import ViewCollegeOfNursing from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_nursing/index.tsx";
 
+import ViewCollegeOfCriminology from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_criminology/index.tsx";
+
+import ViewCollegeOfICT from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_information_and_communication_technology/index.tsx";
 
 import ViewOSA from "@innovative_troublemaker/campus_information_system/view/administrative/office_of_student_affairs/index.tsx";
 
@@ -34,27 +31,9 @@ import ViewAccounting from "@innovative_troublemaker/campus_information_system/v
 import ViewRegistrar from "@innovative_troublemaker/campus_information_system/view/administrative/registrar/index.tsx";
 
 //REM: [TODO, TEMP, ANY_KEYWORD]
-type ComponentItemPrime = React.ComponentClass<any> | React.FC<any>;
-
-type NavigationItemPrime = Toolpad.NavigationPageItem;
-
-// interface ComponentItem {
-//     readonly COMPONENT_ITEM_PRIME?: ComponentItemPrime;
-// }
-
-// interface NavigationItem {
-//     navigationItemPrime: NavigationItemPrime;
-// }
-
-export interface RouteData {
-    readonly ID: string;
-    path: string;
-    component?: ComponentItemPrime;
-    navigation: NavigationItemPrime;
-}
 
 
-export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
+export const ROUTES: { readonly [key: string]: $model.IRouteData } = Object.freeze({
     HOME: Object.freeze({
         ID: "HOME",
         path: "/",
@@ -109,6 +88,26 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
         navigation: {
             segment: "department/college-of-nursing",
             title: "College of Nursing",
+            icon: <MUIIcon.SchoolSharp />
+        }
+    }),
+    COLLEGE_OF_CRIMINOLOGY: Object.freeze({
+        ID: "COLLEGE_OF_CRIMINOLOGY",
+        path: "/academic/department/college-of-criminology",
+        component: ViewCollegeOfCriminology,
+        navigation: {
+            segment: "department/college-of-criminology",
+            title: "College of Criminology",
+            icon: <MUIIcon.SchoolSharp />
+        }
+    }),
+    COLLEGE_OF_ICT: Object.freeze({
+        ID: "COLLEGE_OF_ICT",
+        path: "/academic/department/college-of-ict",
+        component: ViewCollegeOfICT,
+        navigation: {
+            segment: "department/college-of-ict",
+            title: "College of ICT",
             icon: <MUIIcon.SchoolSharp />
         }
     }),
@@ -195,31 +194,8 @@ export const ROUTES: { readonly [key: string]: RouteData } = Object.freeze({
 });
 
 
-// ROUTES.COLLEGE_OF_ENGINEERING.navigation.children = [
-//     ROUTES.COLLEGE_OF_COMPUTER_ENGINEERING.navigation,
-// ]
-
-// export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = Object.freeze({
-//     [ROUTES.HOME.path]: ROUTES.HOME,
-//     [ROUTES.LIBRARY.path]: ROUTES.LIBRARY,
-//     [ROUTES.COLLEGE_OF_ENGINEERING.path]: ROUTES.COLLEGE_OF_ENGINEERING,
-//     [ROUTES.COLLEGE_OF_NURSING.path]: ROUTES.COLLEGE_OF_NURSING,
-//     [ROUTES.OSA.path]: ROUTES.OSA,
-//     [ROUTES.CHAPEL.path]: ROUTES.CHAPEL,
-//     [ROUTES.SPORT.path]: ROUTES.SPORT
-// });
-
-
-// export const ROUTES_GATE: Readonly<{[key: string]: RouteData}> = Object.freeze(
-//     Object.values(ROUTES).reduce((acc, route) => {
-//         acc[route.path] = route;
-//         return acc;
-//     }, {} as {[key: string]: RouteData})
-// );
-
-
-export const ROUTES_GATE: Readonly<{ [key: string]: RouteData }> = (() => {
-    const gate: { [key: string]: RouteData } = {};
+export const ROUTES_GATE: Readonly<{ [key: string]: $model.IRouteData }> = (() => {
+    const gate: { [key: string]: $model.IRouteData } = {};
 
     Object.values(ROUTES).forEach(route => {
         gate[route.path] = Object.freeze( route );
