@@ -3,6 +3,7 @@
 import * as React from "react";
 import * as ReactRouterDOM from "react-router-dom";
 import * as MUI from "@mui/material";
+import * as MUIColor from "@mui/material/colors";
 
 
 const ViewHome: React.FC = () => {
@@ -17,8 +18,6 @@ const ViewHome: React.FC = () => {
                     The College of Engineering offers a variety of programs and degrees in engineering fields. Our campus is equipped with state-of-the-art facilities and resources to ensure that students receive the best education and hands-on experience.
                 </MUI.Typography>
             </MUI.Stack>
-
-            {/* Departments Section */}
             <div style={{ textAlign: 'center' }}>
                 <MUI.Typography variant="h4" gutterBottom>
                     Engineering Departments
@@ -65,8 +64,12 @@ const ViewHome: React.FC = () => {
                     {/* Add more department cards as needed */}
                 </div>
             </div>
+            <MUI.Stack sx={{ }}>
+                <MUI.Typography variant="body1" className={`text-start p-2`}>
+                    Hi there
+                </MUI.Typography>
+            </MUI.Stack>
 
-            {/* Events Section */}
             <MUI.Stack spacing={2}>
                 <MUI.Typography variant="h4" gutterBottom>
                     Upcoming Events
@@ -76,7 +79,6 @@ const ViewHome: React.FC = () => {
                 </MUI.Typography>
             </MUI.Stack>
 
-            
         </MUI.Stack>
     </>);
 }

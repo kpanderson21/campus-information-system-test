@@ -1,16 +1,21 @@
 
 import * as React from "react";
 import * as Toolpad from "@toolpad/core";
+import * as MUI from "@mui/material";
 import * as MUIIcon from "@mui/icons-material";
 
-import ROUTES_GATE, {ROUTES} from "@innovative_troublemaker/campus_information_system/component/layout/context/route.tsx";
+import ROUTES_GATE, { ROUTES } from "@innovative_troublemaker/campus_information_system/component/layout/context/route.tsx";
 
-import TOOLPAD_THEME from "@innovative_troublemaker/campus_information_system/component/layout/theme/template-theme-i.mts";
+import TOOLPAD_THEME from "@innovative_troublemaker/campus_information_system/component/layout/theme/template-theme-ii.mts";
 
 import FooterI from "@innovative_troublemaker/campus_information_system/component/FooterI.tsx";
 
 import PageContent from "@innovative_troublemaker/campus_information_system/component/PageContent.tsx";
 
+type AuthProvider = {
+    id: string;
+    name: string;
+};
 
 const NAVIGATION: Toolpad.Navigation = [
     { kind: 'header', title: 'Academic' },
@@ -25,6 +30,7 @@ const NAVIGATION: Toolpad.Navigation = [
             ROUTES.COLLEGE_OF_ENGINEERING.navigation,
             ROUTES.COLLEGE_OF_NURSING.navigation,
             ROUTES.COLLEGE_OF_CRIMINOLOGY.navigation,
+            ROUTES.COLLEGE_OF_EDUCATION.navigation,
         ],
     },
     { kind: 'divider' },
@@ -34,6 +40,7 @@ const NAVIGATION: Toolpad.Navigation = [
     ROUTES.ACCOUNTING.navigation,
     ROUTES.OSA.navigation,
     ROUTES.CHAPEL.navigation,
+    ROUTES.OFFICE_OF_VICE_PRESIDENT.navigation,
     ROUTES.SPORT.navigation,
     { segment: 'integrations', title: 'Integrations', icon: <MUIIcon.Layers /> },
 ];
@@ -76,6 +83,14 @@ export default class SimpleDashboardLayout extends React.Component {
         this.setState({ pathname: path });
     };
 
+    handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        this.setState({ [event.target.name]: event.target.value });
+    };
+
+    handleSignIn = (provider: AuthProvider) => {
+        console.log(`Signing in with ${provider.name}`);
+    };
+
     render(): React.ReactElement {
         const { pathname } = this.state;
         const router = {
@@ -85,24 +100,27 @@ export default class SimpleDashboardLayout extends React.Component {
         };
 
         return (<>
+
             <Toolpad.AppProvider
                 navigation={NAVIGATION}
-                branding={{ 
-                    logo: `[LOGO]`, 
+                branding={{
+                    logo: `[LOGO]`,
                     title: `CAMPUS`,
                 }}
                 router={router}
                 theme={TOOLPAD_THEME}
             >
                 <Toolpad.DashboardLayout>
-                    {/* <ReactRouterDOM.BrowserRouter> */}
-                    {/* <ReactRouterDOM.Routes> */}
-                    <PageContent pathname={pathname} />
-                    <FooterI/>
-                    {/* </ReactRouterDOM.Routes> */}
-                    {/* </ReactRouterDOM.BrowserRouter> */}
+                    <MUI.Box sx={{ px: 2, }}>
+                        {/* <ReactRouterDOM.BrowserRouter> */}
+                        {/* <ReactRouterDOM.Routes> */}
+                        <PageContent pathname={pathname} />
+                        <FooterI />
+                        {/* </ReactRouterDOM.Routes> */}
+                        {/* </ReactRouterDOM.BrowserRouter> */}
+                    </MUI.Box>
                 </Toolpad.DashboardLayout>
-            </Toolpad.AppProvider>
+            </Toolpad.AppProvider >
         </>);
     }
 }

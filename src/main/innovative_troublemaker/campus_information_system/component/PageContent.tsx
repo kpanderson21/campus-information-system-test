@@ -18,8 +18,8 @@ export default class PageContent extends React.Component<{ pathname: string }> {
 
         return (
             <MUI.Box sx={{ py: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-                <MUI.Typography sx={{ width: `100%`, textAlign: `start`, justifyContent: `center` }}>
-                    &gt; Page content for {pathname}
+                <MUI.Typography sx={{ width: `100%`, textAlign: `start`, justifyContent: `center`, fontWeight: `bold` }}>
+                    / {pathname.split('/').filter(Boolean).join(` > `)}
                 </MUI.Typography>
                 <ContentComponent />
             </MUI.Box>

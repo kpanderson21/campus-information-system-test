@@ -12,6 +12,8 @@ import ViewCollegeOfCriminology from "@innovative_troublemaker/campus_informatio
 
 import ViewCollegeOfICT from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_information_and_communication_technology/index.tsx";
 
+import ViewCollegeOfEduction from "@innovative_troublemaker/campus_information_system/view/academic/department/college_of_education/index.tsx";
+
 import ViewOSA from "@innovative_troublemaker/campus_information_system/view/administrative/office_of_student_affairs/index.tsx";
 
 import ViewChapel from "@innovative_troublemaker/campus_information_system/view/administrative/chapel/index.tsx";
@@ -30,7 +32,7 @@ import ViewAccounting from "@innovative_troublemaker/campus_information_system/v
 
 import ViewRegistrar from "@innovative_troublemaker/campus_information_system/view/administrative/registrar/index.tsx";
 
-//REM: [TODO, TEMP, ANY_KEYWORD]
+import ViewOfficeOfVicePresident from "@innovative_troublemaker/campus_information_system/view/administrative/office_of_vice_president/index.tsx";
 
 
 export const ROUTES: { readonly [key: string]: $model.IRouteData } = Object.freeze({
@@ -108,6 +110,16 @@ export const ROUTES: { readonly [key: string]: $model.IRouteData } = Object.free
         navigation: {
             segment: "department/college-of-ict",
             title: "College of ICT",
+            icon: <MUIIcon.SchoolSharp />
+        }
+    }),
+    COLLEGE_OF_EDUCATION: Object.freeze({
+        ID: "COLLEGE_OF_EDUCATION",
+        path: "/academic/department/college-of-education",
+        component: ViewCollegeOfEduction,
+        navigation: {
+            segment: "department/college-of-education",
+            title: "College of Eduction",
             icon: <MUIIcon.SchoolSharp />
         }
     }),
@@ -190,18 +202,28 @@ export const ROUTES: { readonly [key: string]: $model.IRouteData } = Object.free
             title: "Registrar",
             icon: <MUIIcon.FolderSharedSharp />
         }
+    }),
+    OFFICE_OF_VICE_PRESIDENT: Object.freeze({
+        ID: "OFFICE_OF_VICE_PRESIDENT",
+        path: "/administrative/office-of-Vice-president",
+        component: ViewOfficeOfVicePresident,
+        navigation: {
+            segment: "administrative/office-of-Vice-president",
+            title: "Office of Vice President",
+            icon: <MUIIcon.BusinessCenterSharp />
+        }
     })
 });
 
 
 export const ROUTES_GATE: Readonly<{ [key: string]: $model.IRouteData }> = (() => {
-    const gate: { [key: string]: $model.IRouteData } = {};
+    const GATES: { [key: string]: $model.IRouteData } = {};
 
     Object.values(ROUTES).forEach(route => {
-        gate[route.path] = Object.freeze( route );
+        GATES[route.path] = Object.freeze( route );
     });
 
-    return Object.freeze(gate);
+    return Object.freeze(GATES);
 })();
 
 
