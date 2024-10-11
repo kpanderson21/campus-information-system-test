@@ -4,6 +4,7 @@ import * as React from "react";
 import * as ReactRouterDOM from "react-router-dom";
 import * as MUI from "@mui/material";
 import * as MUIColor from "@mui/material/colors";
+import ComponentEvent from "./component/event";
 
 
 const ViewHome: React.FC = () => {
@@ -69,15 +70,8 @@ const ViewHome: React.FC = () => {
                     Hi there
                 </MUI.Typography>
             </MUI.Stack>
-
-            <MUI.Stack spacing={2}>
-                <MUI.Typography variant="h4" gutterBottom>
-                    Upcoming Events
-                </MUI.Typography>
-                <MUI.Typography variant="body1">
-                    Stay tuned for exciting events and workshops happening at the College of Engineering. Check back regularly for updates on seminars, guest lectures, and hands-on workshops.
-                </MUI.Typography>
-            </MUI.Stack>
+            
+            <ComponentEvent/>
 
         </MUI.Stack>
     </>);
